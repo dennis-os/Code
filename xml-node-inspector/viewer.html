@@ -1,0 +1,41 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<title>XML Node Inspector</title>
+<link rel="stylesheet" href="viewer.css">
+<style>
+html,body{margin:0;height:100%;background:#fbfcfd}
+#drop{position:fixed;inset:0;display:grid;place-items:center;
+  font:13px/1.6 "Inter",-apple-system,"Segoe UI",system-ui,sans-serif;color:#1c2530}
+#drop .card{width:min(560px,90vw);background:#fff;border:1px solid #e0e6ec;border-radius:12px;
+  padding:26px 26px 22px;box-shadow:0 10px 34px rgba(18,40,61,.08)}
+#drop h1{margin:0 0 6px;font-size:19px}
+#drop p{margin:0 0 16px;color:#546474}
+#status{display:none;color:#a33;font-size:12px;white-space:pre-wrap}
+#drop textarea{width:100%;height:150px;font:12px/1.5 "JetBrains Mono",ui-monospace,monospace;
+  border:1px solid #ccd7e2;border-radius:7px;padding:10px;resize:vertical}
+.row{display:flex;gap:9px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.row button,.row label{font:inherit;font-weight:600;font-size:12.5px;padding:8px 13px;border-radius:6px;cursor:pointer}
+.row button{border:0;background:#12283d;color:#fff}
+.row button:hover{background:#1d3d5c}
+.row label{border:1px solid #ccd7e2;background:#fff;color:#26404f}
+.row label:hover{background:#eef4f9}
+#drop.dragover .card{border-color:#4aa3ff;box-shadow:0 0 0 3px rgba(74,163,255,.18)}
+#file{position:absolute;width:1px;height:1px;opacity:0}
+#file:focus-visible + label{outline:2px solid #4aa3ff;outline-offset:2px}
+</style></head><body>
+<div id="drop">
+  <div class="card">
+    <h1>XML laden</h1>
+    <p>Datei hierher ziehen, auswählen, oder XML unten einfügen. Alles bleibt lokal im Browser.</p>
+    <p id="status" role="status" aria-live="polite"></p>
+    <textarea id="ta" placeholder="&lt;root&gt;…&lt;/root&gt;" spellcheck="false"></textarea>
+    <div class="row">
+      <button id="go">Analysieren</button>
+      <input type="file" id="file" accept=".xml,.xsd,.xsl,.xslt,.rss,.atom,.svg,.kml,.gpx,.wsdl,text/xml,application/xml">
+      <label for="file">Datei wählen…</label>
+    </div>
+  </div>
+</div>
+<div id="host"></div>
+<script src="core.js"></script>
+<script src="viewer.js"></script>
+</body></html>
